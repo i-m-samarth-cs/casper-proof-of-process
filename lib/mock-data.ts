@@ -1,0 +1,127 @@
+import type { WorkflowDefinition, WorkflowInstance } from "./types"
+
+export const mockWorkflows: WorkflowDefinition[] = [
+  {
+    id: "wf-1",
+    name: "Contract Approval Process",
+    version: "1.0",
+    nodes: [],
+    edges: [],
+    contractAddress: "0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb",
+    createdAt: new Date("2024-01-15"),
+    updatedAt: new Date("2024-01-15"),
+  },
+  {
+    id: "wf-2",
+    name: "Compliance Review Workflow",
+    version: "2.1",
+    nodes: [],
+    edges: [],
+    contractAddress: "0x8ba1f109551bD432803012645Ac136ddd64DBA72",
+    createdAt: new Date("2024-02-01"),
+    updatedAt: new Date("2024-02-20"),
+  },
+  {
+    id: "wf-3",
+    name: "Invoice Processing",
+    version: "1.5",
+    nodes: [],
+    edges: [],
+    contractAddress: "0x5aAeb6053F3E94C9b9A09f33669435E7Ef1BeAed",
+    createdAt: new Date("2024-01-10"),
+    updatedAt: new Date("2024-03-05"),
+  },
+]
+
+export const mockInstances: Record<string, WorkflowInstance[]> = {
+  "wf-1": [
+    {
+      id: "inst-1",
+      workflowId: "wf-1",
+      workflowName: "Contract Approval Process",
+      workflowVersion: "1.0",
+      status: "completed",
+      externalId: "CA-2024-001",
+      assignee: "Legal Team",
+      steps: [
+        {
+          id: "s1",
+          stepName: "Initial Review",
+          actor: "0x1a2b3c4d5e6f7g8h9i0j",
+          timestamp: new Date("2024-03-01T10:00:00"),
+          status: "completed",
+          evidenceHash: "0xabc123def456ghi789jkl012mno345pqr678stu901vwx234yz",
+        },
+        {
+          id: "s2",
+          stepName: "Legal Approval",
+          actor: "0x9z8y7x6w5v4u3t2s1r0q",
+          timestamp: new Date("2024-03-02T14:30:00"),
+          status: "completed",
+          evidenceHash: "0xdef456ghi789jkl012mno345pqr678stu901vwx234yzabc123",
+        },
+        {
+          id: "s3",
+          stepName: "Final Sign-off",
+          actor: "0x5k4j3h2g1f0e9d8c7b6a",
+          timestamp: new Date("2024-03-03T09:15:00"),
+          status: "completed",
+          evidenceHash: "0xghi789jkl012mno345pqr678stu901vwx234yzabc123def456",
+        },
+      ],
+      createdAt: new Date("2024-03-01"),
+      updatedAt: new Date("2024-03-03"),
+    },
+    {
+      id: "inst-2",
+      workflowId: "wf-1",
+      workflowName: "Contract Approval Process",
+      workflowVersion: "1.0",
+      status: "in-progress",
+      externalId: "CA-2024-002",
+      assignee: "Finance Team",
+      steps: [
+        {
+          id: "s1",
+          stepName: "Initial Review",
+          actor: "0x2b3c4d5e6f7g8h9i0j1a",
+          timestamp: new Date("2024-03-10T11:00:00"),
+          status: "completed",
+          evidenceHash: "0xjkl012mno345pqr678stu901vwx234yzabc123def456ghi789",
+        },
+      ],
+      createdAt: new Date("2024-03-10"),
+      updatedAt: new Date("2024-03-10"),
+    },
+  ],
+  "wf-2": [
+    {
+      id: "inst-3",
+      workflowId: "wf-2",
+      workflowName: "Compliance Review Workflow",
+      workflowVersion: "2.1",
+      status: "violated",
+      externalId: "CR-2024-015",
+      assignee: "Compliance Officer",
+      steps: [
+        {
+          id: "s1",
+          stepName: "Document Submission",
+          actor: "0x3c4d5e6f7g8h9i0j1a2b",
+          timestamp: new Date("2024-02-25T08:00:00"),
+          status: "completed",
+          evidenceHash: "0xmno345pqr678stu901vwx234yzabc123def456ghi789jkl012",
+        },
+        {
+          id: "s2",
+          stepName: "Compliance Check",
+          actor: "0x4d5e6f7g8h9i0j1a2b3c",
+          timestamp: new Date("2024-03-01T16:00:00"),
+          status: "failed",
+        },
+      ],
+      createdAt: new Date("2024-02-25"),
+      updatedAt: new Date("2024-03-01"),
+    },
+  ],
+}
